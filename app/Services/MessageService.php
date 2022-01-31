@@ -10,12 +10,12 @@ class MessageService
     //
     private $username;
     private $password;
-    private $apiUrl = "https://api.mojasms.dev";
-    public function __construct(String $username, String $password, String $apiUrl)
+    
+    public function __construct(String $username, String $password)
     {
         $this->username = $username;
         $this->password = $password;
-        $this->apiUrl = $apiUrl;
+        $this->apiUrl = env();
         $this->apiAuthentication();
         
     }

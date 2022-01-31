@@ -76,51 +76,7 @@
         </div>
     </div>
 
-    <div class="modal fade" id="addAssessment">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title">Send a Message/h5>
-                        <button type="button" class="close" aria-hidden="false" data-dismiss="modal">
-                            &times;
-                        </button>
-                    </div>
-                    <form method="post" action="{{url('/storeAssessment')}}">
-                        @csrf
-                        <div class="modal-body">
-                            <input type="hidden" id="application_id" name="application_id" value="{{$student->id}}">
-                            <div class="form-group">
-                                <label class="col-form-label" for="course_id">Course</label>
-                                <select name="course_id" id="course_id" class="form-control shadow-sm" onclick="checkerX()">
-                                    @foreach($smss as $cour)
-                                        <option value="{{$course->id}}">{{$course->course_name}}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-
-                            <div class="form-group">
-                                <label class="col-form-label" for="marks">Marks<span id="mks"></span></label>
-                                <input type="number" min="0" id="marks" class="form-control" name="marks">
-                            </div>
-  
-  
-                            <div class="form-group">
-                                <label class="col-form-label" for="marks">Marks<span id="mks"></span></label>
-                                <input type="number" min="0" id="marks" class="form-control" name="marks">
-                            </div>
-                        </div>
-                        <div class="modal-footer justify-content-center">
-                            <button type="button" class="btn btn-sm btn-default" data-dismiss="modal">
-                                Close
-                            </button>
-                            <button type="submit" class="btn btn-sm btn-primary">
-                                Send Message
-                            </button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
+    
 </div>
 </body>
 </html>

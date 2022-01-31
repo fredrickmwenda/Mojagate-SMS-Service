@@ -13,8 +13,6 @@ class Message extends Model
         'from',
         'phone',
         'message',
-        
-        
-
+        'message_id'
     ];
 }
