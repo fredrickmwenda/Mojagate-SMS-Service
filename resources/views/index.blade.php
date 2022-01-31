@@ -1,12 +1,17 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-<link rel="stylesheet" href="{{URL::asset('style.css')}}">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" href="" type="image/png">
+
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
+
+    <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>MOJAGATE SMS SERVICE</title>
 </head>
 <body>
 <div class="top-nav">
@@ -58,13 +63,13 @@
                 </tr>
                 </thead>
                 <tbody>
-                @foreach($messages as $message)
+                @foreach($sms as $sms)
                     <tr>
                         <td>{{$loop->index+1}}</td>
                        
-                        <td>{{$message->phone}}</td>
-                        <td>{{$message->message}}</td>
-                        <td>{{$message->created_at}}</td>
+                        <td>{{$sms->phone}}</td>
+                        <td>{{$sms->message}}</td>
+                        <td>{{$sms->created_at}}</td>
                        
                     </tr>
                 @endforeach
@@ -75,5 +80,8 @@
 
     
 </div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>

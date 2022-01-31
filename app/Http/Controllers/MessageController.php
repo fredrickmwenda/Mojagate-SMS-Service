@@ -10,8 +10,8 @@ use Illuminate\Support\Facades\Http;
 class MessageController extends Controller
 {
     public function index(){
-        
-        return view('index');
+        $sms = Message::all();
+        return view('index', compact('sms'));
     }
     public function  sendMessage(Request $request)
     {
