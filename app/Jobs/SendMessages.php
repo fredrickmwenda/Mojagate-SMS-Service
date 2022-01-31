@@ -34,8 +34,8 @@ class SendMessages implements ShouldQueue
     public function handle()
     {
         //
-      $detail = (new MessageService(env('MOJAGATE_EMAIl'), env('MOJAGATE_PASSWORD')))->sendSMS($this->details['phone'], $this->details['message'], $this->details['from']);
+      $detail = (new MessageService(env('MOJAGATE_EMAIl'), env('MOJAGATE_PASSWORD')))->sendSMS($this->details['phone'], $this->details['message'], $this->details['from'],);
         
-        return $detail;
+      return $detail;
     }
 }

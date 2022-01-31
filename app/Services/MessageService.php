@@ -2,10 +2,9 @@
 
 namespace App\Services;
 
-use Illuminate\Http\Request;
+
 use Illuminate\Support\Facades\Http;
-use Illuminate\Support\Facades\Cache;
-use GuzzleHttp\Client;
+
 
 class MessageService 
 {
@@ -26,25 +25,7 @@ class MessageService
 
     public function apiAuthentication(){
        
-        // $client = new Client();
-        
 
-        // $response = $client->post(
-        //     $this->apiURl,
-        //     dd($this->apiURl),
-        //     [
-        //         'headers' => [
-        //             'Accept' => 'application/json',
-        //         ],
-        //         'json' => [
-        //             'email' => $this->username,
-        //             'password' => $this->password,
-        //         ],
-        //     ]
-        // );
-        // dd($response);
-        // $body = $response->getBody();
-        // dd(json_decode((string) $body));
         $headers = [
             'Accept' => 'application/json',
         ];
@@ -53,20 +34,18 @@ class MessageService
             'password' => $this->password,
         ];
 
-        //Generate the token 
-        
+        //Generate the token    
         $token = Http::withHeaders($headers)->post($this->apiUrl.'/login',$json)->json();
         // dd($token['data']['token']);
         
         
-
-        // //return the token to be used to send the email
+        // //return the token to be used for authentication verification
         return $token['data']['token'];
-        // Cache::put('token',$token['json']['token']);
+       
 
     }
 
-    public function sendSMS(String $phone,String $message, $id){     
+    public function sendSMS(String $phone,String $message, String $message_id ){     
         $query = $this->apiAuthentication();
         
          
@@ -79,11 +58,13 @@ class MessageService
             'from' => 'MOJAGATE',
             'phone' => $phone,
             'message' => $message,
-            'message_id' => $id,
-            'webhook_url' => "https://mojagate.com/sms-webhook" ,   
+            'message_id' => $message_id,
+            'webhook_url' => env('WEBHOOK_URL'),   
         ];
+        
 
         $sendMessage =  Http::withHeaders($headers)->post($this->apiUrl.'/sendsms',$json)->json();
+        // dd($sendMessage);
 
         return $sendMessage;
 
