@@ -2,7 +2,7 @@
 
 namespace App\Jobs;
 
-use App\Http\Controllers\MessageService;
+use App\Services\MessageService;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldBeUnique;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -34,6 +34,8 @@ class SendMessages implements ShouldQueue
     public function handle()
     {
         //
-        return MessageService::sendSMS($this->details['phone'], $this->details['message'], $this->details['from']);
+      $detail = (new MessageService(env('MOJAGATE_EMAIl'), env('MOJAGATE_PASSWORD')))->sendSMS($this->details['phone'], $this->details['message'], $this->details['from']);
+        
+        return $detail;
     }
 }

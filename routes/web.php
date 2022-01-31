@@ -19,4 +19,4 @@ Route::get('', function () {
 });
 
 Route::get('/index', [App\Http\Controllers\MessageController::class, 'index']);
-Route::get('/send_sms', [App\Http\Controllers\MessageController::class, 'sendMessage'])->name('send_sms');
+Route::post('/send_sms', [App\Http\Controllers\MessageController::class, 'sendMessage'])->name('send_sms');

@@ -34,6 +34,10 @@
                     </div>
                     <div class="card-body">
                         <div class="form-group">
+                            <label>FROM</label>
+                           <textarea class="form-control" name="from" value="MOJAGATE" readonly>MOJAGATE</textarea>                           
+                        </div>
+                        <div class="form-group">
                             <label>Phone Number</label>
                            <textarea class="form-control" name="phone"></textarea>
                         </div>
