@@ -15,7 +15,7 @@ class MessageService
     {
         $this->username = $username;
         $this->password = $password;
-        $this->apiUrl = env();
+        $this->apiUrl = config('mojagate_url');
         $this->apiAuthentication();
         
     }
