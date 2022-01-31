@@ -9,6 +9,10 @@ use Illuminate\Support\Facades\Http;
 
 class MessageController extends Controller
 {
+    public function index(){
+        
+        return view('index');
+    }
     public function  sendMessage(Request $request)
     {
         //validation of request to send

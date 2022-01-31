@@ -20,29 +20,26 @@
 <div class="container mt-4">
     <div class="row">
         <div class="col-md-4">
-            <form action="{{route('send_message')}}" method="post">
+            <form action="{{route('send_sms')}}" method="post">
                 @csrf
                 <div class="card">
                     <div class="card-header">
-                        <h6>Send Message</h6>
-                        @include('include.messages')
+                        <h6>Send SMS</h6>
+                       
                     </div>
                     <div class="card-body">
                         <div class="form-group">
-                            <label>Select Customer</label>
-                           <select class="form-control" name="customer">
-                               @foreach($customers as $customer)
-                                   <option value="{{$customer->id}}">{{$customer->name}}</option>
-                               @endforeach
-                           </select>
+                            <label>Phone Number</label>
+                           <textarea class="form-control" name="phone"></textarea>
                         </div>
+
                         <div class="form-group">
                             <label>Message</label>
                            <textarea class="form-control" name="message"></textarea>
                         </div>
                     </div>
                     <div class="card-footer">
-                        <button class="btn btn-success">Send Message</button>
+                        <button class="btn btn-success">Send SMS</button>
                     </div>
                 </div>
             </form>
